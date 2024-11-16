@@ -1,5 +1,7 @@
 # Basic Layout
 
+[💻🌃代码地址](https://github.com/laohei7/ComposeDome/blob/main/app/src/main/java/com/laohei/composedemo/demo/BasicLayout.kt)
+
 ## Box
 
 `Box` 将元素堆叠摆放，可以通过 `aligin()`、`contentAlignment` 指定元素摆放的位置。
@@ -446,7 +448,36 @@
 
 ## FlowRow
 
+
+`FlowRow` 是一种在 ltr 布局中从左到右（ltr）或在 rtl 布局中从右到左（rtl）填充项目的布局，当它用完空间时，
+移动到位于底部的下一个“行”，然后继续填充项目直到项目用完。
+
+```Kotlin
+FlowRow(
+        modifier = Modifier.width(360.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        repeat(9) {
+            Card {
+                Text(text = "item $it")
+                Image(
+                    painter = painterResource(R.drawable.rem_icon),
+                    contentDescription = "",
+                    modifier = Modifier.size(100.dp)
+                )
+            }
+        }
+    }
+```
+
+![image_16.png](image_16.png)
+
 ## FlowColumn
+
+同 `FlowRow`，仅在排列方式上由行改为列，使用方式基本一样。
+
+![image_17.png](image_17.png)
 
 ## LazyVerticalGrid
 
@@ -455,4 +486,10 @@
 ## LazyVerticalStaggeredGrid
 
 ## LazyHorizontalStaggeredGrid
+
+## LazyHorizontalPager
+
+## LazyVerticalPager
+
+
 
