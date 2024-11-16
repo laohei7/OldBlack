@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <footer>
+        <social type="bilibili" href="https://space.bilibili.com/291325546?spm_id_from=333.1007.0.0"/>
+        <social type="email" href="laohei7@outlook.com"/>
+        <link href="https://developer.android.com/">Android Developers</link>
+        <copyright>2024 Lao Hei</copyright>
+    </footer>
+    <build-profile instance="in">
+        <variables>
+            <noindex-content>false</noindex-content>
+            <header-logo>my-logo.png</header-logo>
+            <custom-favicons>my-logo.png</custom-favicons>
+            <primary-color>blueberry</primary-color>
+            <color-preset>soft</color-preset>
+            <download-title>Github</download-title>
+            <download-page>https://github.com/laohei7</download-page>
+            <showDownloadButton>true</showDownloadButton>
+        </variables>
+    </build-profile>
+
+</buildprofiles>

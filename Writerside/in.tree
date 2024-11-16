@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                  name="Instance Name"
+                  start-page="starter.md">
+    <toc-element topic="starter.md"/>
+
+    <toc-element toc-title="Android">
+        <toc-element toc-title="Compose">
+            <toc-element topic="Basic-Layout.md"/>
+            <toc-element topic="Modifier.md"/>
+        </toc-element>
+    </toc-element>
+
+    <!--    <toc-element topic="英语短语.md"/>-->
+    <!--    <toc-element topic="高数.md"/>-->
+</instance-profile>
