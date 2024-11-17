@@ -453,7 +453,7 @@
 移动到位于底部的下一个“行”，然后继续填充项目直到项目用完。
 
 ```Kotlin
-FlowRow(
+    FlowRow(
         modifier = Modifier.width(360.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalArrangement = Arrangement.SpaceAround
@@ -481,15 +481,160 @@ FlowRow(
 
 ## LazyVerticalGrid
 
+
+<tabs>
+    <tab title="Fixed()">
+        定义具有固定行数或列数的网格。例如，对于垂直 Fixed(3） 意味着父组件宽度有 3 列，各占 1/3。
+        <code-block lang="Kotlin">
+            // ...
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(5)
+            ) {
+                items(list) {
+                    Surface(
+                        color = Color(
+                            red = Random.nextInt(255),
+                            blue = Random.nextInt(255),
+                            green = Random.nextInt(255),
+                        )
+                    ) {
+                        Image(
+                            painter = painterResource(it),
+                            contentDescription = "",
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+            }
+        </code-block>
+        <img src="image_18.png" alt=""/>
+    </tab>
+    <tab title="Adaptive()">
+        定义具有尽可能多的行或列的网格，条件是每个单元格至少具有 minSize 空间并且所有额外空间均匀分布。
+        例如，对于垂直 LazyVerticalGrid Adaptive（20.dp） 意味着将有尽可能多的列，每列至少为 20.dp，
+        并且所有列的宽度都相等。如果屏幕宽度为 88.dp，则将有 4 列，每列 22.dp 。
+        <code-block lang="Kotlin">
+            // ....
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(60.dp)
+            ) {
+                items(list) {
+                    Surface(
+                        color = Color(
+                            red = Random.nextInt(255),
+                            blue = Random.nextInt(255),
+                            green = Random.nextInt(255),
+                        )
+                    ) {
+                        Image(
+                            painter = painterResource(it),
+                            contentDescription = "",
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+            }
+        </code-block>
+        <img src="image_19.png" alt=""/>
+    </tab>
+    <tab title="FixedSize()">
+            定义具有尽可能多的行或列的网格，条件是每个单元格都正好占用大小空间。剩余空间将通过 LazyGrid 安排在相应的轴上。
+            如果 size 大于容器大小，则单元格的大小将与容器匹配。例如，对于垂直 LazyGrid FixedSize（20.dp） 意味着将有尽
+            可能多的列，并且每列都将正好为 20.dp。如果屏幕宽度为 88.dp，则将有 4 列 20.dp，其余 8.dp 
+            通过 Arrangement.Horizontal。
+            <code-block lang="Kotlin">
+                // ....
+                LazyVerticalGrid(
+                    columns = GridCells.FixedSize(60.dp)
+                ) {
+                    items(list) {
+                        Surface(
+                            color = Color(
+                                red = Random.nextInt(255),
+                                blue = Random.nextInt(255),
+                                green = Random.nextInt(255),
+                            )
+                        ) {
+                            Image(
+                                painter = painterResource(it),
+                                contentDescription = "",
+                                modifier = Modifier.fillMaxSize()
+                            )
+                        }
+                    }
+                }
+            </code-block>
+            <img src="image_20.png" alt=""/>
+        </tab>
+</tabs>
+
+
 ## LazyHorizontalGrid
+
+同 `LazyVerticalGrid`，仅排列方式上由列改为行。
+
+![img4.gif](img4.gif)
 
 ## LazyVerticalStaggeredGrid
 
+```Kotlin
+    LazyVerticalStaggeredGrid(
+        columns = StaggeredGridCells.Fixed(2)
+    ) {
+        items(list) {
+            Surface(
+                color = Color(
+                    red = Random.nextInt(255),
+                    blue = Random.nextInt(255),
+                    green = Random.nextInt(255),
+                )
+            ) {
+                Image(
+                    painter = painterResource(it),
+                    contentDescription = "",
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+        }
+    }
+```
+
+![image_21.png](image_21.png)
+
 ## LazyHorizontalStaggeredGrid
 
-## LazyHorizontalPager
+同 `LazyVerticalStaggeredGrid`，使用方式基本一样。
 
-## LazyVerticalPager
+![img5.gif](img5.gif)
 
+## HorizontalPager
 
+```Kotlin
+    val list = remember {
+        listOf(
+            R.drawable.rem_icon_3,
+            R.drawable.rem_icon_2,
+            R.drawable.rem_icon,
+            R.drawable.rem_icon_5,
+        )
+    }
 
+    val pagerState = rememberPagerState { list.size }
+
+    HorizontalPager(
+        state = pagerState
+    ) {
+        Image(
+            painter = painterResource(list[it]),
+            contentDescription = ""
+        )
+    }
+```
+
+![img6.gif](img6.gif)
+
+## VerticalPager
+
+同 `HorizontalPager`，使用方式基本一样。
+
+![img7.gif](img7.gif)
